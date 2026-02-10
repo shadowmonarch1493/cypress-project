@@ -1,0 +1,15 @@
+# dependencies
+node_modules/
+
+# cypress artifacts
+cypress/screenshots/
+cypress/videos/
+
+# reports
+mochawesome-report/
+report.json
+
+# env files
+.env
+
+cypress/reports/
