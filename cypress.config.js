@@ -189,11 +189,12 @@ module.exports = defineConfig({
   screenshotOnRunFailure: true,
 
   e2e: {
-    // ✅ REAL baseUrl (used by cy.visit('/'))
+    //  REAL baseUrl (used by cy.visit('/'))
     baseUrl: "https://www.naukri.com",
 
     // ✅ ENV variables (used by Cypress.env())
     env: {
+      demo1:"https://demoqa.com/elements",
       email: "test@test.com",
       password: "password123"
     },

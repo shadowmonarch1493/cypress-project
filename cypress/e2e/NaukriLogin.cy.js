@@ -188,11 +188,14 @@ describe('Naukri Login', () => {
     cy.intercept('POST', '**/central-login-services/v1/login')
       .as('loginAPI')
 
-    cy.visit('/nlogin/login')   // ✅ FIXED
+      cy.loginViaAPI(loginData.valid.email, loginData.valid.password);
+
+    
   })
 
   it('Valid email + Valid password', () => {
 
+    cy.visit('/nlogin/login')   
     loginPage.login(
       loginData.valid.email,
       loginData.valid.password
@@ -215,3 +218,4 @@ describe('Naukri Login', () => {
   // other tests unchanged…
 })
 
+// cy.request() command to bypass the UI login process, obtain authentication credentials (like a token or session cookie), and then manually set the application's state before proceeding with your tests. 
