@@ -1,35 +1,37 @@
-describe('Backend Login using API (Dummy Site)', () => {
+describe('Backend Login using API (DummyJSON)', () => {
 
   it('Login via API and save token in localStorage', () => {
 
-    // 1️⃣ Open browser (needed for localStorage)
-    cy.visit('https://reqres.in')
+    // 1️⃣ Open browser context
+    cy.visit('https://dummyjson.com')
 
-    // 2️⃣ Call LOGIN API directly (backend)
+    // 2️⃣ Backend login (NO UI)
     cy.request({
       method: 'POST',
-      url: 'https://reqres.in/api/login',
+      url: 'https://dummyjson.com/auth/login',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: {
-        email: 'eve.holt@reqres.in',
-        password: 'cityslicka'
+        username: 'kminchelle',
+        password: '0lelplR'
       }
     }).then((response) => {
 
-      // 3️⃣ Verify API success
+      // 3️⃣ Verify login success
       expect(response.status).to.eq(200)
 
-      // 4️⃣ Get token from API response
+      // 4️⃣ Get token
       const token = response.body.token
 
-      // 5️⃣ Save token in localStorage
+      // 5️⃣ Save token to localStorage
       window.localStorage.setItem('token', token)
 
+      // 6️⃣ Verify token is saved
       expect(window.localStorage.getItem('token')).to.exist
 
-
-      // 6️⃣ Log it (for understanding)
-      cy.log('Token saved: ' + token)
+      // 7️⃣ Log for understanding
+      cy.log('Token saved successfully')
     })
   })
-
 })
