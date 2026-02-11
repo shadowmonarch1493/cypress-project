@@ -27,3 +27,17 @@
 
 
 // if we use commands we can use the commands everywhere in tests 
+
+
+Cypress.Commands.add('loginByAPI', () => {
+  cy.session('naukri-login', () => {
+    cy.request({
+      method: 'POST',
+      url: 'https://www.naukri.com/central-login-services/v1/login',
+      body: {
+        username: Cypress.env('email'),
+        password: Cypress.env('password')
+      }
+    })
+  })
+})

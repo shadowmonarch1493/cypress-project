@@ -98,49 +98,109 @@
 
 
 //---------------------------------------------------------------------------------------------------------------------------
+// const { defineConfig } = require("cypress");
+
+// module.exports = defineConfig({
+//   reporter: "cypress-mochawesome-reporter",
+
+//   reporterOptions: {
+    
+//     // reportDir: "cypress/reports",
+//     // charts: true,
+//     // embeddedScreenshots: true, // adds screenshots to html
+//     // inlineAssets: true,        // embeds assets in html
+//     // saveAllAttempts: false,
+//     // code: false,                // hides test code
+//     // html: true,
+//     // json: true,
+//     // overwrite: false
+//     // // keepjson:true,
+//     // // savejson:true
+//     reporterOptions: {
+//   reportDir: "cypress/reports",
+//   charts: true,
+//   embeddedScreenshots: true,
+//   inlineAssets: true,
+//   saveAllAttempts: false,
+//   code: false,
+//   html: true,
+//   json: true,
+//   overwrite: true
+//   }
+//   },
+
+//   screenshotsFolder: "cypress/screenshots",
+//   screenshotOnRunFailure: true,
+
+//   env: {
+//     baseUrl: "https://www.naukri.com/nlogin/login"
+//     //baseurl:"https://demoqa.com/text-box"
+//   },
+
+//   e2e: {
+
+//     env: {
+//       email: "test@test.com",
+//       password: "password123"
+//     },
+//     setupNodeEvents(on, config) {
+
+//       // ADD THIS: enables cy.task('log')
+//       on('task', {
+//         log(message) {
+//           console.log(message)
+//           return null
+//         }
+//       })
+
+//       //  mochawesome plugin
+//       require("cypress-mochawesome-reporter/plugin")(on)
+
+//       return config
+//     },
+
+//     specPattern: "cypress/e2e/**/*.cy.js",
+//     supportFile: "cypress/support/e2e.js"
+//   }
+// });
+
+
+//======================================================================================================================================================================================
+
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
+
   reporter: "cypress-mochawesome-reporter",
 
   reporterOptions: {
-    
-    // reportDir: "cypress/reports",
-    // charts: true,
-    // embeddedScreenshots: true, // adds screenshots to html
-    // inlineAssets: true,        // embeds assets in html
-    // saveAllAttempts: false,
-    // code: false,                // hides test code
-    // html: true,
-    // json: true,
-    // overwrite: false
-    // // keepjson:true,
-    // // savejson:true
-    reporterOptions: {
-  reportDir: "cypress/reports",
-  charts: true,
-  embeddedScreenshots: true,
-  inlineAssets: true,
-  saveAllAttempts: false,
-  code: false,
-  html: true,
-  json: true,
-  overwrite: true
-  }
+    reportDir: "cypress/reports",
+    charts: true,
+    embeddedScreenshots: true,
+    inlineAssets: true,
+    saveAllAttempts: false,
+    code: false,
+    html: true,
+    json: true,
+    overwrite: true
   },
 
   screenshotsFolder: "cypress/screenshots",
   screenshotOnRunFailure: true,
 
-  env: {
-    baseUrl: "https://www.naukri.com/nlogin/login"
-    //baseurl:"https://demoqa.com/text-box"
-  },
-
   e2e: {
+    // ✅ REAL baseUrl (used by cy.visit('/'))
+    baseUrl: "https://www.naukri.com",
+
+    // ✅ ENV variables (used by Cypress.env())
+    env: {
+      email: "test@test.com",
+      password: "password123"
+    },
+
     setupNodeEvents(on, config) {
 
-      // ✅ ADD THIS: enables cy.task('log')
+      // enables cy.task('log')
       on('task', {
         log(message) {
           console.log(message)
@@ -148,7 +208,7 @@ module.exports = defineConfig({
         }
       })
 
-      // ✅ KEEP THIS: mochawesome plugin
+      // mochawesome plugin
       require("cypress-mochawesome-reporter/plugin")(on)
 
       return config
@@ -158,7 +218,3 @@ module.exports = defineConfig({
     supportFile: "cypress/support/e2e.js"
   }
 });
-
-
-
-
