@@ -1,34 +1,3 @@
-describe('DemoQA - Elements Automation', () => {
-
-//   beforeEach(() => {
-//     cy.visit('"https://demoqa.com/elements"')
-//   })
-
-//   //  TEXT BOX
-//   it('Text Box', () => {
-//     cy.contains(/Text Box/i).click() // using (/Text Box/i ) remove  case sensitive while finding elements
-
-//     cy.get('#userName').type('Mukesh')
-//     cy.get('#userEmail').type('mukesh@gmail.com')
-//     cy.get('#currentAddress').type('qwetr')
-//     cy.get('#submit').click()
-
-//     cy.get('#output').should('contain', 'Mukesh')
-//   })
-
-//   //  CHECK BOX
-//  //   it.only('Check Box', () => { ===========>  it.only runs only one it block 
-
-//    it('Check Box', () => {
-//     cy.contains('Check Box').click()
-
-//     cy.get('.rct-icon rct-icon-expand-closel').click()
-//     // cy.get('label[for="tree-node-home"]').click()
-
-//     // cy.get('#result').should('contain', 'home')
-//   })
-
-
 describe('DemoQA - Elements Section', () => {
 
   beforeEach(() => {
@@ -151,4 +120,67 @@ describe('DemoQA - Elements Section', () => {
 
 })
 
-  })
+  
+
+describe('DemoQA',()=>{
+
+beforeEach(  ()=>{
+  cy.visit("https://demoqa.com/elements")
+})
+//==========================================TEXT FIELD=========================================================
+it
+('text feild', () => {
+  cy.contains('Text Box').click()
+
+  cy.get('#userName').type("mani not in mouth ")
+  cy.get('#userEmail').type('cherry@gmail.com')
+  cy.get('#currentAddress').type('AP')
+  cy.get('#permanentAddress').type('BKL at 6:45 mom will arrive ')
+  cy.get('#submit').click()
+
+  cy.get('#Name').should('contain.text','mani not in mouth ')
+  cy.get('#email').should('contain.text','cherry@gmail.com')
+});
+
+//===============================================cHECKK BOX==========================================================================
+it('check box', () => {
+cy.contains('Check Box').click()//Find ANY visible element on the page that contains the text Check Box
+
+cy.get('.rct-icon.rct-icon-expand-close').click()
+//cy.get('tree-node-desktop').click
+
+cy.contains('Desktop').click()
+//cy.get('.rct-icon.rct-icon-expand-close').click()
+cy.contains('Documents').click()
+
+cy.contains('Downloads').click()
+});
+
+//================================================RADIO BUTTON=======================================================================
+it('RadioButton', () => {
+  cy.contains('Radio Button').click()
+
+  cy.contains('Yes').click()
+
+  cy.contains('Impressive').click()
+  
+});
+
+//=========================================WEB TABLES=========================================================================
+
+it.only('Web Tables', () => {
+  cy.contains('Web Tables').click()
+
+  cy.get('.btn.btn-primary').click()//add button\
+  cy.get('#firstName').type('Mukesh')
+  cy.get('#lastName').type('Mukesh')
+  cy.get('#userEmail').type('Mukesh@gmail.com')
+  cy.get('#age').type('18')
+  cy.get('#salary').type('200000')
+  cy.get('#department').type('Sonic solutions')
+cy.get('#submit').click()
+
+
+
+});
+})
