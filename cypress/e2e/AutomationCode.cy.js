@@ -14,48 +14,52 @@ describe('Login - Naukri', () => {
 
     cy.contains('Login').click()
 
-  //  //Assert login success (search bar visible)
-  //  cy.get('.nI-gNb-sb__placeholder').should('be.visible').click()
+   //Assert login success (search bar visible)
+   cy.get('.nI-gNb-sb__placeholder').should('be.visible').click()
 
-  //  cy.get('input[placeholder="Enter keyword / designation / companies"]').should('be.visible').type('developer{enter}')
+   cy.get('input[placeholder="Enter keyword / designation / companies"]').type('Developer')
+   
+   cy.get('.ddInput.nonSearched').click()
+ 
+  // cy.get('ni-gnb-icn.ni-gnb-icn-expand-more').click()
 
-  //  cy.get('.dropdownMainContainer').click()
-  //  cy.contains('Fresher').click()
+  cy.get('li[title="2 years"]').should('be.visible').click()
 
-//    cy.get('.nI-gNb-sb__placeholder')
+  cy.get('input[placeholder="Enter location"]').type('Hyderabad').click()
+
+  cy.get('.ni-gnb-icn.ni-gnb-icn-search').click()
+
+   //cy.get('.suggestor-input').type('hyderabad')
+
+    // 1️⃣ Open the search bar
+//     cy.get('.nI-gNb-sb__placeholder', { timeout: 20000 })
+//       .should('be.visible')
+//       .click()
+
+//     // 2️⃣ Enter Role
+// cy.get('input[placeholder="Enter keyword / designation / companies"]')
+//   .should('be.visible')
+//   .type('developer')
+//   //3️⃣ Open Experience dropdown (IMPORTANT STEP)
+// cy.contains('Select experience')
 //   .should('be.visible')
 //   .click()
-// cy.get('input[placeholder="Enter keyword / designation / companies"]')
-  
-//   .type('developer')
 
-// cy.contains('Fresher' )
-  
+// // 4️⃣ Select Fresher (NOW it is visible)
+// cy.contains('Fresher', { timeout: 10000 })
+//   .should('be.visible')
 //   .click()
 
+// // 5️⃣ Enter Location
+// cy.get('input[placeholder="Enter location"]')
+//   .should('be.visible')
+//   .type('Hyderabad')
 
-// 1️⃣ Open search bar
-cy.get('.nI-gNb-sb__placeholder', { timeout: 15000 })
-  .should('be.visible')
-  .click()
-
-// 2️⃣ Enter keyword
-cy.get('input[placeholder="Enter keyword / designation / companies"]')
-  .should('be.visible')
-  .type('developer')
-
-// 3️⃣ Select experience (DO NOT touch experienceDD input)
-cy.contains('Fresher', { timeout: 10000 })
-  .should('be.visible')
-  .click()
-
-// 4️⃣ Enter location
-cy.get('input[placeholder="Enter location"]')
-  .should('be.visible')
-  .type('Bangalore')
-
-// 5️⃣ Click Search
-cy.contains('Search').click()
+// // 6️⃣ Click Search
+// cy.contains('Search')
+//   .should('be.visible')
+//   .click()
+	
 
 
 
