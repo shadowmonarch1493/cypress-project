@@ -29,6 +29,39 @@ describe('Login - Naukri', () => {
 
   cy.get('.ni-gnb-icn.ni-gnb-icn-search').click()
 
+  cy.get('.cust-job-tuple', { timeout: 10000 })
+  .should('be.visible')
+  .first()
+  .scrollIntoView()
+  .find('a')
+  .first()
+  .then($link => {
+    // remove target to open in same tab
+    const href = $link.prop('href')
+    cy.visit(href)
+  })
+
+  cy.get('body').then($body => {
+
+  if ($body.text().includes('Apply on company website')) {
+
+    cy.contains(/Apply on company website/i)
+      .invoke('removeAttr', 'target')
+      .click()
+
+  } else if ($body.text().includes('Apply')) {
+
+    cy.contains(/^Apply$/)
+      .click()
+
+  } else {
+    cy.log('Apply button not available')
+  }
+
+})
+
+
+
    //cy.get('.suggestor-input').type('hyderabad')
 
     // 1️⃣ Open the search bar

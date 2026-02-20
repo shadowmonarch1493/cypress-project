@@ -19,7 +19,7 @@ cy.title()
 
 
 describe ('login',() =>{
-    it('should be logged in', () => {
+    it.only('should be logged in', () => {
         
         cy.wait(3000) // quick learning phase only
 
@@ -34,6 +34,9 @@ cy.get('.waves-effect.waves-light.btn-large.btn-block.btn-bold.blue-btn.textTran
 cy.wait(3000) // quick learning phase only
 
 cy.get('.nI-gNb-sb__placeholder').click()
+
+cy.get('.nI-gNb-sb__keywords > .nI-gNb-sugg > .suggestor-wrapper > .suggestor-box > .suggestor-input').type('developer')
+cy.get('.dropdownMainContainer > .ni-gnb-icn') .and ('contains','fresher').click()
 
 
 
